@@ -61,7 +61,51 @@ function showToast(){const t=$('#toast');t.classList.add('show');clearTimeout(wi
 function petal(){const p=document.createElement('span');p.className='petal';p.textContent=Math.random()>.5?'❀':'✦';p.style.left=Math.random()*100+'vw';p.style.setProperty('--drift',(Math.random()*180-90)+'px');p.style.animationDuration=(6+Math.random()*7)+'s';p.style.fontSize=(10+Math.random()*13)+'px';$('.petals').appendChild(p);setTimeout(()=>p.remove(),14000)}
 setInterval(petal,900);
 
-// Tiny ambient chime using Web Audio; only starts after a user gesture.
-let audioCtx=null, soundOn=false, timer=null;
-function chime(){if(!soundOn)return; const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=392;g.gain.setValueAtTime(.0001,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.025,audioCtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.8);o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.85)}
-$('#soundBtn').addEventListener('click',()=>{if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();soundOn=!soundOn;$('#soundBtn').textContent=soundOn?'♫':'♪';if(soundOn){chime();timer=setInterval(chime,6000)}else clearInterval(timer)});
+// Background Music Player (Sitar wedding music with Web Audio synth fallback)
+const bgMusic = $('#bgMusic');
+const soundBtn = $('#soundBtn');
+let isMusicPlaying = false;
+let audioCtx = null, synthTimer = null;
+const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25]; // Sa Re Ga Pa Dha Sa
+
+function playSynthMelody() {
+  if (!isMusicPlaying || !audioCtx) return;
+  const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+  o.type = 'triangle';
+  o.frequency.value = notes[Math.floor(Math.random() * notes.length)];
+  g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.14, audioCtx.currentTime + 0.05);
+  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.1);
+  o.connect(g).connect(audioCtx.destination);
+  o.start();
+  o.stop(audioCtx.currentTime + 1.15);
+}
+
+soundBtn.addEventListener('click', async () => {
+  if (!isMusicPlaying) {
+    let played = false;
+    if (bgMusic) {
+      try {
+        await bgMusic.play();
+        played = true;
+      } catch (err) {
+        console.warn('Audio element autoplay restricted or unavailable, switching to Web Audio synth', err);
+      }
+    }
+    if (!played) {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') await audioCtx.resume();
+      playSynthMelody();
+      synthTimer = setInterval(playSynthMelody, 900);
+    }
+    isMusicPlaying = true;
+    soundBtn.textContent = '♫';
+    soundBtn.classList.add('playing');
+  } else {
+    isMusicPlaying = false;
+    soundBtn.textContent = '♪';
+    soundBtn.classList.remove('playing');
+    if (bgMusic) bgMusic.pause();
+    if (synthTimer) { clearInterval(synthTimer); synthTimer = null; }
+  }
+});
