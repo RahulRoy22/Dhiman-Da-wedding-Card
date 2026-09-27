@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#143d2b">
+  <meta name="description" content="A beautiful interactive wedding invitation for Dhiman & Anamika.">
+  <title>Dhiman & Anamika — Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+Assamese:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="petals" aria-hidden="true"></div>
+  <button class="sound" id="soundBtn" aria-label="Toggle ambient sound">♪</button>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow"></div>
+      <div class="hero-content">
+        <div class="mini-mark">❋</div>
+        <p class="eyebrow">A celebration of love • অসমীয়া বিবাহৰ আমন্ত্ৰণ</p>
+        <h1>Dhiman <span>&</span> Anamika</h1>
+        <p class="assamese-title">জয় গুৰু শঙ্কৰ</p>
+        <p class="hero-subnames">শ্ৰীমান ধীমন জ্যোতি দাস (ডাঙৰ ধন) <span>আৰু</span> শ্ৰীমতী অনামিকা ডেকা (মুনু)</p>
+        <p class="hero-date">16 October 2026 · Friday · ২৮ আহিন</p>
+        <p class="hero-copy">Two hearts, one beautiful beginning.<br>Come celebrate the wedding of Dhiman & Anamika.</p>
+        <button class="open-btn" id="openBtn"><span>Open the invitation</span><b>↗</b></button>
+        <div class="scroll-cue">Scroll to explore <span>↓</span></div>
+      </div>
+    </section>
+
+    <section class="story reveal" id="story">
+      <div class="section-label">A SACRED UNION · শুভ পৰিণয়</div>
+      <div class="story-grid">
+        <div>
+          <h2>Together in love,<br><em>blessed by tradition.</em></h2>
+          <p class="lead">With the blessings of the Almighty and our elders, <strong>Dhiman Jyoti Das (Dangor Dhon)</strong> and <strong>Anamika Deka (Munu)</strong> are embarking on a lifelong journey of love and togetherness.</p>
+          <div class="ornament">✦ ───────── ✦</div>
+          <p>We cordially invite you and your family to join us on <strong>Friday, 16 October 2026 (২৮ আহিন)</strong> to celebrate this joyous union and shower your heartfelt blessings upon the couple.</p>
+        </div>
+        <div class="mini-card" id="miniCard" tabindex="0" role="button" aria-label="Flip the invitation card">
+          <div class="mini-card-inner">
+            <div class="mini-front"><span>জয় গুৰু শঙ্কৰ</span><small>Tap to flip</small></div>
+            <div class="mini-back"><span>Dhiman & Anamika</span><small>16 · 10 · 2026</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="invitation reveal" id="invitation">
+      <div class="section-label">INVITATION CARD · নিমন্ত্ৰণ পত্ৰ</div>
+      <h2>The Wedding Invitation<br><em>সাদৰ নিমন্ত্ৰণ</em></h2>
+      <p class="section-copy">Please join us in celebrating this joyous milestone. Your presence and warm blessings will make our special day truly complete.</p>
+      <div class="card-frame">
+        <div class="card-topline"><span>অসমীয়া নিমন্ত্ৰণ</span><span>16 • 10 • 2026</span></div>
+        <img src="assets/invitation.jpg" alt="Original Assamese wedding invitation card of Dhiman and Anamika">
+        <div class="card-bottomline">With love and blessings from the Das family · সেৱাৰে</div>
+      </div>
+    </section>
+
+    <section class="details reveal" id="details">
+      <div class="section-label">THE DAY</div>
+      <h2>Save the date.</h2>
+      <div class="countdown" id="countdown">
+        <div><strong id="days">--</strong><span>days</span></div>
+        <div><strong id="hours">--</strong><span>hours</span></div>
+        <div><strong id="minutes">--</strong><span>minutes</span></div>
+        <div><strong id="seconds">--</strong><span>seconds</span></div>
+      </div>
+      <div class="details-grid">
+        <article class="detail-card">
+          <span class="icon">✦</span><small>DATE & OCCASION</small>
+          <h3>Friday<br>16 October 2026</h3>
+          <p class="assamese-small">২৮ আহিন, শুক্ৰবাৰ</p>
+          <p>Mark the day. Come with family to shower your heartfelt blessings upon the groom.</p>
+        </article>
+        <article class="detail-card">
+          <span class="icon">⌖</span><small>VENUE · আতিথ্য কানন</small>
+          <h3>Family Residence</h3>
+          <p>House No. 17, Vill: Barchenikuchi<br>Sandha-Chatra Path, Nalbari, Assam - 781337</p>
+          <p class="assamese-small">গৃহ নং ১৭, গাঁওঃ বৰচেনীকুছি, সন্ধা-চত্ৰা পথ, নলবাৰী, অসম - ৭৮১৩৩৭</p>
+          <p class="card-contact">দূৰভাষ: 93994669139</p>
+        </article>
+        <article class="detail-card">
+          <span class="icon">❀</span><small>CORDIALLY INVITED BY · সেৱাৰে</small>
+          <h3>The Das Family</h3>
+          <p>Padmapati Das <em>(Grandmother / আইতা)</em><br>Nizara Das <em>(Mother / মা)</em><br>Simanta Jyoti Das <em>(Brother / ভাইটি)</em></p>
+          <p class="assamese-small">তদুপলক্ষে স-পৰিয়ালে সাদৰেৰে নিমন্ত্ৰণ জনালোঁ ৷৷</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="play reveal" id="play">
+      <div class="section-label">A LITTLE SOMETHING</div>
+      <h2>Play with the flowers.</h2>
+      <p class="section-copy">Tap the garden. Each touch releases a little celebration.</p>
+      <div class="garden" id="garden" aria-label="Interactive flower garden">
+        <div class="stem s1"></div><div class="stem s2"></div><div class="stem s3"></div>
+        <button class="flower f1">✿</button><button class="flower f2">✾</button><button class="flower f3">✿</button>
+        <button class="flower f4">❀</button><button class="flower f5">✾</button>
+        <div class="garden-hint">tap anywhere</div>
+      </div>
+    </section>
+
+    <section class="blessing reveal">
+      <div class="blessing-inner">
+        <div class="assamese-script">জয় গুৰু শঙ্কৰ</div>
+        <h2>May Dhiman & Anamika's<br>new journey be blessed.</h2>
+        <p>সাদৰেৰে নিমন্ত্ৰণ আৰু আশীৰ্বাদেৰে · With warm blessings and love</p>
+        <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to the beginning ↑</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">A little blessing for Dhiman & Anamika ✦</div>
+  <script src="script.js"></script>
+</body>
+</html>
