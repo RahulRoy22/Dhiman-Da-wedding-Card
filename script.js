@@ -10,8 +10,19 @@ $('#openBtn').addEventListener('click', () => {
 
 // Flip invitation
 const miniCard = $('#miniCard');
-miniCard.addEventListener('click', () => miniCard.classList.toggle('flipped'));
-miniCard.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') {e.preventDefault(); miniCard.click();} });
+let cardFlipping = false;
+function flipCard(e) {
+  if (e) {
+    if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+  }
+  if (cardFlipping) return;
+  cardFlipping = true;
+  miniCard.classList.toggle('flipped');
+  setTimeout(() => { cardFlipping = false; }, 400);
+}
+miniCard.addEventListener('click', flipCard);
+miniCard.addEventListener('keydown', flipCard);
 
 // Countdown
 function tick(){
